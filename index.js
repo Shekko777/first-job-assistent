@@ -11,6 +11,6 @@ form.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
   arr.push(inputTitle.value);
-  localStorage.setItem('arr', );
+  localStorage.setItem('arr', arr);
   console.log(arr)
 });
