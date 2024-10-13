@@ -1,0 +1,104 @@
+@import url(./vender/fonts.css);
+
+.body {
+  font-family: "InterRegular";
+  max-width: 1340px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  color: #000;
+  background-color: #fff;
+  position: relative;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+  margin-bottom: 60px;
+}
+
+.header__title {
+  font-family: 'InterBlack';
+}
+
+.header__theme-icon {
+  max-width: 50px;
+}
+
+/* FORM */
+.form {
+  margin: 0;
+}
+
+.form__fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form__input {
+  padding: 5px 15px;
+  font-size: 18px;
+
+}
+
+.form__input::placeholder {
+  font-size: 18px;
+}
+
+.form__button {
+  font-size: 20px;
+}
+
+/* LIST */
+.list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  max-width: 600px;
+  overflow: hidden;
+  width: 100%;
+  font-size: 18px;
+  border: 1px solid #000;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.item:active {
+  opacity: 0.7;
+}
+
+.item__text {
+  overflow: hidden;
+  max-width: 500px;
+  white-space: nowrap;
+  margin: 0;
+  cursor: default;
+}
+
+.item__img {
+  max-width: 30px;
+}
+
+/* FOOTER */
+.footer {
+  position: absolute;
+  bottom: 0;
+  margin: 60px auto 60px;
+  font-size: 18px;
+}

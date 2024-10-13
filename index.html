@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ivan Pershin">
+  <meta name="description" content="Приложение призванное помогать в работе">
+  <meta name="keywords" content="Copy, Копирование, Копировальщик">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="icon" href="./images/favicon.png">
+  <title>копирка 1.0</title>
+</head>
+<body class="body">
+  <header class="header">
+    <h1 class="header__title">Копирка v1.0</h1>
+
+    <form class="form" action="#">
+      <fieldset class="form__fieldset">
+        <input class="form__input form__input-title" type="text" placeholder="Введи название">
+        <input class="form__input form__input-text" type="text" placeholder="Введи текст для копирования">
+        <button class="form__button" type="submit">+</button>
+      </fieldset>
+    </form>
+
+    <button class="header__theme">
+      <img class="header__theme-icon" src="./images/header/night-shift_1-512.png" alt="Сменить тему сайта">
+    </button>
+  </header>
+
+  <main class="main">
+    <ul class="list">
+      <li class="item">
+        <p class="item__text">Копирование первого элемента будет примерно таким</p>
+        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
+      </li>
+      <li class="item">
+        <p class="item__text">Копирование первого элемента будет примерно таким</p>
+        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
+      </li>
+      <li class="item">
+        <p class="item__text">Копирование первого элемента будет примерно таким</p>
+        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
+      </li>
+      <li class="item">
+        <p class="item__text">Копирование первого элемента будет примерно таким</p>
+        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
+      </li>
+      <li class="item">
+        <p class="item__text">Копирование первого элемента будет примерно таким</p>
+        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
+      </li>
+    </ul>
+  </main>
+  
+  <footer class="footer">
+    <small class="footer__small">&copy; 2024 Собственная разработка Ивана Першина</small>
+  </footer>
+
+  <template class="template">
+    <li class="main__item">
+      <p class="main__text"></p>
+      <button class="main__delete-button"></button>
+    </li>
+  </template>
+
+  <script src="./index.js"></script>
+</body>
+</html>
