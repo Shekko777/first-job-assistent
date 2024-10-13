@@ -1,7 +1,6 @@
 document.onload = function () {
   console.log(JSON.parse(localStorage.getItem('arr')));
 }();
-localStorage.clear();
 
 const form = document.querySelector('.form');
 const inputTitle = document.querySelector('.form__input-title');
