@@ -16,8 +16,8 @@
 
     <form class="form" action="#">
       <fieldset class="form__fieldset">
-        <input class="form__input form__input-title" type="text" placeholder="Введи название">
-        <input class="form__input form__input-text" type="text" placeholder="Введи текст для копирования">
+        <input class="form__input form__input-title" type="text" placeholder="Введи название" required>
+        <input class="form__input form__input-text" type="text" placeholder="Введи текст для копирования" required>
         <button class="form__button" type="submit">+</button>
       </fieldset>
     </form>
@@ -29,26 +29,7 @@
 
   <main class="main">
     <ul class="list">
-      <li class="item">
-        <p class="item__text">Копирование первого элемента будет примерно таким</p>
-        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
-      </li>
-      <li class="item">
-        <p class="item__text">Копирование первого элемента будет примерно таким</p>
-        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
-      </li>
-      <li class="item">
-        <p class="item__text">Копирование первого элемента будет примерно таким</p>
-        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
-      </li>
-      <li class="item">
-        <p class="item__text">Копирование первого элемента будет примерно таким</p>
-        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
-      </li>
-      <li class="item">
-        <p class="item__text">Копирование первого элемента будет примерно таким</p>
-        <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
-      </li>
+      
     </ul>
   </main>
   
@@ -57,9 +38,10 @@
   </footer>
 
   <template class="template">
-    <li class="main__item">
-      <p class="main__text"></p>
-      <button class="main__delete-button"></button>
+    <li class="item">
+      <p class="item__text"></p>
+      <p class="item__hidetext"></p>
+      <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
     </li>
   </template>
 
