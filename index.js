@@ -1,7 +1,6 @@
 document.onload = function () {
   console.log(JSON.parse(localStorage.getItem('arr')));
 }();
-localStorage.clear();
 
 const form = document.querySelector('.form');
 const inputTitle = document.querySelector('.form__input-title');
@@ -9,6 +8,12 @@ const inputText = document.querySelector('.form__input-text');
 const items = document.querySelectorAll('.item');
 const list = document.querySelector('.list');
 const template = document.querySelector('.template').content;
+const resetButton = document.querySelector('.header__reset');
+// modal
+const modal = document.querySelector('.modal');
+const modalButtonNo = document.querySelector('.modal__button_type_no');
+const modalButtonYes = document.querySelector('.modal__button_type_yes');
+
 
 let localArr = JSON.parse(localStorage.getItem('arr'));
 let arr = [];
@@ -52,3 +57,9 @@ function createElement(title = 'title', text = 'text') {
 function deleteElement(text) {
   arr = arr.filter(el => el.title !== text);
 }
+
+resetButton.addEventListener('click', () => {
+  localStorage.clear();
+  const items = document.querySelectorAll('.item');
+  items.forEach(el => el.remove());
+});

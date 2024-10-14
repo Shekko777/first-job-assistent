@@ -11,31 +11,33 @@
   <title>копирка 1.0</title>
 </head>
 <body class="body">
-  <header class="header">
-    <h1 class="header__title">Копирка v1.0</h1>
-
-    <form class="form" action="#">
-      <fieldset class="form__fieldset">
-        <input class="form__input form__input-title" type="text" placeholder="Введи название" required>
-        <input class="form__input form__input-text" type="text" placeholder="Введи текст для копирования" required>
-        <button class="form__button" type="submit">+</button>
-      </fieldset>
-    </form>
-
-    <button class="header__theme">
-      <img class="header__theme-icon" src="./images/header/night-shift_1-512.png" alt="Сменить тему сайта">
-    </button>
-  </header>
-
-  <main class="main">
-    <ul class="list">
-      
-    </ul>
-  </main>
+  <div class="container">
+    <header class="header">
+      <h1 class="header__title">Копирка v1.0</h1>
   
-  <footer class="footer">
-    <small class="footer__small">&copy; 2024 Собственная разработка Ивана Першина</small>
-  </footer>
+      <form class="form" action="#">
+        <fieldset class="form__fieldset">
+          <input class="form__input form__input-title" type="text" placeholder="Введи название" required>
+          <input class="form__input form__input-text" type="text" placeholder="Введи текст для копирования" required>
+          <button class="form__button" type="submit">+</button>
+        </fieldset>
+      </form>
+  
+      <button class="header__reset">
+        Удалить всё
+      </button>
+    </header>
+  
+    <main class="main">
+      <ul class="list">
+      </ul>
+    </main>
+    
+    <footer class="footer">
+      <img class="footer__img" src="./images/diamond.png" alt="стив">
+      <small class="footer__small">2024 Собственная разработка Ивана Першина</small>
+    </footer>
+  </div>
 
   <template class="template">
     <li class="item">
@@ -44,6 +46,16 @@
       <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
     </li>
   </template>
+
+  <div class="modal">
+    <div class="modal__container">
+      <h2 class="modal__text">Вы уверены в удалении?</h2>
+      <div class="modal__wrapper">
+        <button class="modal__button modal__button_type_yes" type="submit">Да</button>
+        <button class="modal__button modal__button_type_no" type="button">Нет</button>
+      </div>
+    </div>
+  </div>
 
   <script src="./index.js"></script>
 </body>
