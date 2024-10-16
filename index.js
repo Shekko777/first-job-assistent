@@ -1,7 +1,3 @@
-document.onload = function () {
-  console.log(JSON.parse(localStorage.getItem('arr')));
-}();
-
 const form = document.querySelector('.form');
 const inputTitle = document.querySelector('.form__input-title');
 const inputText = document.querySelector('.form__input-text');
@@ -32,7 +28,6 @@ list.addEventListener('click', (evt) => {
     navigator.clipboard.writeText(miniText);
   } else if (evt.target.classList == 'item__img') {
     deleteElement(evt.target.closest('.item').querySelector('.item__text').textContent);
-    console.log(evt.target.closest('.item').querySelector('.item__text').textContent);
     evt.target.closest('.item').remove();
     localStorage.setItem('arr', JSON.stringify(arr))
   };
@@ -41,7 +36,6 @@ list.addEventListener('click', (evt) => {
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   arr.push({ title: inputTitle.value, text: inputText.value });
-  console.log(arr);
   localStorage.setItem('arr', JSON.stringify(arr))
   createElement(inputTitle.value, inputText.value);
   form.reset();
@@ -58,8 +52,62 @@ function deleteElement(text) {
   arr = arr.filter(el => el.title !== text);
 }
 
+function updateArr() {
+  const items = document.querySelectorAll('.item');
+  let newArr = [];
+  items.forEach(el => {
+    const title = el.querySelector('.item__text').textContent;
+    const text = el.querySelector('.item__hidetext').textContent;
+    newArr.push({title: title, text: text})
+  });
+  arr = newArr;
+  localStorage.setItem('arr', JSON.stringify(arr));
+};
+
 resetButton.addEventListener('click', () => {
   localStorage.clear();
   const items = document.querySelectorAll('.item');
   items.forEach(el => el.remove());
 });
+
+list.addEventListener('dragstart', (evt) => {
+  evt.target.classList.add('select')
+})
+
+list.addEventListener('dragend', (evt) => {
+  evt.target.classList.remove('select');
+  updateArr();
+})
+
+list.addEventListener('dragover', (evt) => {
+  const selectElement = list.querySelector('.select');
+  const currentElement = evt.target;
+  const moveble = selectElement !== currentElement && currentElement.classList.contains('item');
+
+  if(!moveble) {
+    return;
+  }
+
+  const nextElement = getNextElement(evt.clientY, currentElement);
+
+  if (
+    nextElement && 
+    selectElement === nextElement.previousElementSibling ||
+    selectElement === nextElement
+  ) {
+    return;
+  }
+
+  list.insertBefore(selectElement, nextElement);
+});
+
+const getNextElement = (cursorPosition, currentElement) => {
+  const currentElementCoord = currentElement.getBoundingClientRect();
+  const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
+
+  const nextElement = (cursorPosition < currentElementCenter) ?
+      currentElement :
+      currentElement.nextElementSibling;
+
+  return nextElement;
+};
