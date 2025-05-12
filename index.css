@@ -1,14 +1,23 @@
 @import url(./vender/fonts.css);
 
+:root {
+  --bg: #f9f9f9;
+  --text: #222;
+  --label-bg: #fff;
+  --txt-color: #505050;
+  --placeholder-color: #8c8c8c;
+}
+
 .body {
   font-family: "InterRegular";
-  color: #000;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   height: 100vh;
   position: relative;
   margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
 }
 
 .container {
@@ -40,7 +49,6 @@
   align-items: center;
   justify-content: center;
 }
-/*  */
 
 .modal__container {
   display: flex;
@@ -65,7 +73,7 @@
 
 .header__title {
   font-family: 'InterBlack';
-  color: #505050;
+  color: var(--txt-color);
 }
 
 .header__theme-icon {
@@ -88,13 +96,42 @@
 .item__delete {
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  position: relative;
+  max-width: 15px;
+  height: 1px;
+}
+
+.item__delete::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 1.5px;
+  background-color: var(--txt-color);
+  top: 0;
+  right: 0;
+  transform: rotate(-45deg);
+}
+
+.item__delete::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 1.5px;
+  background-color: var(--txt-color);
+  top: 0;
+  right: 0;
+  transform: rotate(45deg);
 }
 
 .form__input {
   padding: 5px 15px;
-  font-size: 18px;
+  font-size: 15px;
   border-radius: 10px;
-  border: 2px solid #4682B4;
+  border: none;
+  background-color: var(--label-bg);
+  color: var(--txt-color);
+  box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
 }
 
 .form__input:focus {
@@ -102,15 +139,18 @@
 }
 
 .form__input::placeholder {
-  font-size: 18px;
+  font-size: 15px;
+  color: var(--placeholder-color)
 }
 
 .form__button {
   font-size: 20px;
   padding: 5px 30px;
-  background-color: #f1f1f1;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
+  background-color: var(--label-bg);
   border-radius: 10px;
-  border: 2px solid #4682B4;
+  border: none;
+  color: var(--txt-color);
 }
 
 /* LIST */
@@ -130,9 +170,11 @@
   justify-content: space-between;
   gap: 10px;
   overflow: hidden;
-  border: 1px solid #4682B4;
-  padding: 10px 10px;
+  background-color: var(--label-bg);
+  box-shadow: 0 0 5px 1px rgba(0,0,0,0.15);
+  padding: 15px 15px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .item:active {
@@ -144,9 +186,9 @@
   max-width: 550px;
   white-space: nowrap;
   margin: 0;
-  font-size: 17px;
-  cursor: default;
-  color: #505050;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--txt-color);
 }
 
 .item__hidetext {
@@ -177,4 +219,86 @@
   position: absolute;
   right: 0;
   top: 0;
+}
+
+/* СМЕНА ТЕМЫ */
+.theme-switch {
+  display: inline-block;
+  position: relative;
+  width: 54px;
+  height: 28px;
+  vertical-align: middle;
+  margin: 1.5em 1em 1.5em 0;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.slider {
+  display: block;
+  background: #ccc;
+  border-radius: 28px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: background 0.3s;
+  box-sizing: border-box;
+}
+
+.icon {
+  position: absolute;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.sun  { left: 7px;  color: orange;      transition: opacity 0.3s; }
+.moon { right: 7px; color: #6666ff;     transition: opacity 0.3s; }
+
+.knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.3s, background 0.3s;
+  box-shadow: 0 0 3px #0002;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: orange;
+}
+.knob:before {
+  content: '☀️';
+  display: block;
+}
+
+input:checked + .slider {
+  background: #555;
+}
+input:checked + .slider .knob {
+  left: 29px;
+  background: #232849;
+  color: #6677ff;
+}
+input:checked + .slider .knob:before {
+  content: '🌙';
+}
+input:checked + .slider .sun {
+  opacity: 0.3;
+}
+input:checked + .slider .moon {
+  opacity: 1;
 }

@@ -7,25 +7,28 @@
   <meta name="description" content="Приложение призванное помогать в работе">
   <meta name="keywords" content="Copy, Копирование, Копировальщик">
   <link rel="stylesheet" href="./index.css">
-  <link rel="icon" href="./images/favicon.png">
-  <title>копирка 1.0</title>
+  <link rel="icon" href="./images/logo.png">
+  <title>Копирка</title>
 </head>
 <body class="body">
   <div class="container">
     <header class="header">
-      <h1 class="header__title">Копирка v1.0</h1>
+      <h1 class="header__title">Копирка</h1>
   
       <form class="form" action="#">
         <fieldset class="form__fieldset">
-          <input class="form__input form__input-title" type="text" placeholder="Введи название" required>
-          <input class="form__input form__input-text" type="text" placeholder="Введи текст для копирования" required>
+          <input class="form__input form__input-title" type="text" placeholder="Название" required>
+          <input class="form__input form__input-text" type="text" placeholder="Копируемый текст" required>
           <button class="form__button" type="submit">+</button>
         </fieldset>
       </form>
   
-      <button class="header__reset">
-        Удалить всё
-      </button>
+      <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider">
+          <span class="knob"></span>
+        </span>
+      </label>
     </header>
   
     <main class="main">
@@ -43,7 +46,7 @@
     <li class="item" draggable="true">
       <p class="item__text"></p>
       <p class="item__hidetext"></p>
-      <button class="item__delete" type="button"><img class="item__img" src="./images/icons8-удалить-64.png" alt="удалить"></button>
+      <button class="item__delete" type="button"></button>
     </li>
   </template>
 

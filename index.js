@@ -4,7 +4,6 @@ const inputText = document.querySelector('.form__input-text');
 const items = document.querySelectorAll('.item');
 const list = document.querySelector('.list');
 const template = document.querySelector('.template').content;
-const resetButton = document.querySelector('.header__reset');
 // modal
 const modal = document.querySelector('.modal');
 const modalButtonNo = document.querySelector('.modal__button_type_no');
@@ -26,7 +25,7 @@ list.addEventListener('click', (evt) => {
   if (evt.target.classList == 'item__text' || evt.target.classList == 'item') {
     const miniText = evt.target.closest('.item').querySelector('.item__hidetext').textContent;
     navigator.clipboard.writeText(miniText);
-  } else if (evt.target.classList == 'item__img') {
+  } else if (evt.target.classList == 'item__delete') {
     deleteElement(evt.target.closest('.item').querySelector('.item__text').textContent);
     evt.target.closest('.item').remove();
     localStorage.setItem('arr', JSON.stringify(arr))
@@ -63,12 +62,6 @@ function updateArr() {
   arr = newArr;
   localStorage.setItem('arr', JSON.stringify(arr));
 };
-
-resetButton.addEventListener('click', () => {
-  localStorage.clear();
-  const items = document.querySelectorAll('.item');
-  items.forEach(el => el.remove());
-});
 
 list.addEventListener('dragstart', (evt) => {
   evt.target.classList.add('select')
@@ -111,3 +104,31 @@ const getNextElement = (cursorPosition, currentElement) => {
 
   return nextElement;
 };
+
+// Смена темы
+const toggle = document.getElementById('theme-toggle');
+function setTheme(isDark) {
+  if (isDark) {
+    document.documentElement.style.setProperty('--bg', '#222');
+    document.documentElement.style.setProperty('--text', '#fff');
+    document.documentElement.style.setProperty('--label-bg', '#565656');
+    document.documentElement.style.setProperty('--txt-color', '#e3e3e3');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.style.setProperty('--bg', '#f9f9f9');
+    document.documentElement.style.setProperty('--text', '#222');
+    document.documentElement.style.setProperty('--txt-color', '#505050');
+    document.documentElement.style.setProperty('--label-bg', '#fff');
+    localStorage.setItem('theme', 'light');
+  }
+}
+toggle.addEventListener('change', function() {
+  setTheme(this.checked);
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    toggle.checked = true;
+    setTheme(true);
+  }
+});
